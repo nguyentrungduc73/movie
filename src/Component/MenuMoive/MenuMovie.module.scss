@@ -1,0 +1,20 @@
+.container {
+  max-width: 120rem;
+  margin: auto;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.4rem;
+
+  color: #b1a21e;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px #1a1a1a;
+  border-bottom: 1px solid #1b3c5d;
+}
+
+.list-movie {
+  padding-top: 1rem;
+}

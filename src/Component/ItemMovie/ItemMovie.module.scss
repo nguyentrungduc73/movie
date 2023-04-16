@@ -1,0 +1,15 @@
+.box-img {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.box-name {
+  margin-top: 1rem;
+}
+
+.box-movie {
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}

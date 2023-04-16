@@ -1,0 +1,112 @@
+.wrapper {
+  padding-top: 8.1rem;
+  min-height: 500px;
+  position: relative;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+}
+// .screen-box {
+//   position: fixed;
+//   height: 100vh;
+//   width: 100vw;
+//   background-color: rgba(0, 0, 0, 0.9);
+//   z-index: 10000;
+// }
+.container {
+  max-width: 130rem;
+  margin: auto;
+}
+
+.para {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1.2rem 0 2.4rem 0;
+}
+
+.sub-para {
+  color: var(--blue-primary);
+  margin-left: 5px;
+}
+
+.movie-info-box {
+  display: flex;
+  justify-content: space-between;
+}
+.name-movie {
+  margin-bottom: 2rem;
+}
+.share {
+  margin-top: 2rem;
+}
+.btn-share {
+  background-color: #485fc7;
+  color: white;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-facebook {
+  transform: translateY(2px);
+}
+
+.suggest-to-login {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  background-color: #3e8ed0;
+  color: #fff;
+  margin: 2rem 0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navigate-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  &:hover {
+    .nav-text {
+      color: #dcf836;
+    }
+  }
+}
+
+.nav-text {
+  color: var(--blue-primary);
+  transition: all 0.5s;
+}
+.btn-login-box {
+  background-color: #ffe08a;
+
+  color: rgba(0, 0, 0, 0.7);
+
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+}
+
+.rate-number {
+  background-color: transparent;
+  color: blue;
+}
+
+.comment-and-suggestmovie {
+  display: flex;
+  gap: 40px;
+}
+.comment-box {
+  width: 40%;
+}
+.suggest-movie {
+  width: 60%;
+}

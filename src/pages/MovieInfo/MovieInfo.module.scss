@@ -1,0 +1,140 @@
+.wrapper {
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+  padding-top: 8.1rem;
+}
+.container {
+  max-width: 140rem;
+  margin: auto;
+}
+
+.background-img-box {
+  height: 600px;
+}
+
+.movie-info-box {
+  display: flex;
+  margin-top: -36rem;
+  gap: 3rem;
+}
+
+.left {
+  padding: 1.2rem 3.2rem;
+  width: 25% !important;
+}
+.poster-box {
+  margin-bottom: 2rem;
+}
+.play-box {
+  width: 100%;
+}
+.btn-play {
+  width: 100%;
+  background-color: #dd003f;
+  color: white;
+  height: 5rem;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.right {
+  color: white;
+  flex: 1;
+  padding-right: 4rem;
+  width: 75%;
+}
+.name-movie {
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.sub-name {
+  color: #b5b5b5;
+  margin-bottom: 2rem;
+}
+.sub-year {
+  margin-left: 1rem;
+  color: var(--blue-primary);
+}
+
+.btn-share {
+  background-color: #485fc7;
+  color: white;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-facebook {
+  transform: translateY(2px);
+}
+
+.share-and-tag {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  display: flex;
+  gap: 10px;
+}
+.tag-item {
+  border: 1px solid white;
+  padding: 4px 12px;
+  font-size: 1rem;
+  border-radius: 25px;
+  height: 20px;
+  width: 90px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.more-info {
+  margin-top: 5rem;
+  font-size: 1.5rem;
+}
+.more-info-item {
+  display: flex;
+  gap: 5rem;
+  margin-top: 1rem;
+}
+.more-info-item-title {
+  color: #7a7a7a;
+  text-transform: uppercase;
+  width: 100px;
+}
+
+.more-info-item-content {
+  color: #dbdbdb;
+}
+
+.more-info-des {
+  margin-top: 3rem;
+  color: #9a9a9a;
+}
+.more-info-actor-list {
+  margin-top: 3rem;
+}
+.actor-box {
+  display: flex;
+  gap: 40px;
+  padding: 0 2rem;
+  margin-top: 1.5rem;
+}
+.actor-item {
+  text-align: center;
+}
+.img-actor {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+}

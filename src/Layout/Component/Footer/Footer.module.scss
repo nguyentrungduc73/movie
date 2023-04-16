@@ -1,0 +1,28 @@
+.wrapper {
+  height: 500px;
+  width: 100%;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(4, 16, 30, 0.876),
+      rgba(17, 24, 32, 0.817)
+    ),
+    url(../../../assets/image/backgroundimagemoive.jpg);
+  background-size: cover;
+}
+.container {
+  max-width: 120rem;
+  margin: auto;
+}
+.title {
+  color: white;
+  padding-top: 2rem;
+}
+.list-item {
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+  color: #93b5b5;
+
+  &:first-child {
+    margin-top: 2.5rem;
+  }
+}

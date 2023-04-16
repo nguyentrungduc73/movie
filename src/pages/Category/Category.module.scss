@@ -1,0 +1,24 @@
+.wrapper {
+  padding-top: 8.1rem;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+}
+
+.container {
+  max-width: 120rem;
+  margin: auto;
+}
+
+.select-box {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.select {
+  width: 100%;
+  outline: none;
+}
+// .option {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+// }

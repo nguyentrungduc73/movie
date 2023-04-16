@@ -1,0 +1,70 @@
+.wrapper {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+  max-width: 600px;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+}
+.title {
+  display: flex;
+  gap: 10px;
+  padding: 2rem 4rem 0 2rem;
+  color: #7a7a7a;
+  margin-bottom: 1.6rem;
+}
+
+.text-area {
+  display: block;
+  min-width: 100%;
+  resize: vertical;
+  padding: 15px;
+  outline: none;
+  background-color: #fff;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  color: #363636;
+  margin-bottom: 1rem;
+}
+.btn-box {
+  text-align: right;
+}
+.btn-send {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 5px 12px;
+}
+
+.comment-box {
+  margin-top: 2rem;
+}
+.comment-item {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  position: relative;
+
+  &:not(:first-child) {
+    border-top: 1px solid gray;
+  }
+}
+
+.btn-delete-comment {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  cursor: pointer;
+}
+.name-and-time {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+}
+.name-user {
+  color: #36362c;
+  width: 220px;
+}
+.time-comment {
+  color: #b5b5b5;
+}

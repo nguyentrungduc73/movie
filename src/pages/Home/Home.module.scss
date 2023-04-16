@@ -1,0 +1,31 @@
+.wrapper {
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+  padding-top: 8.1rem;
+}
+
+.progressing-box {
+  max-width: 120rem;
+  margin: auto;
+  color: white;
+}
+
+.progressing-box-title {
+  color: #dbdbdb;
+  margin-bottom: 1rem;
+}
+
+.progressing-box-content {
+  margin-bottom: 2rem;
+}
+
+.progressing-name {
+  font-size: 1.4rem;
+  color: #5b7198;
+  cursor: pointer;
+}
+
+.progressing-year {
+  font-size: 1.4rem;
+  color: #b5b5b5;
+}

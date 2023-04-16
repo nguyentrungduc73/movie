@@ -1,0 +1,43 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white-primary);
+}
+:root {
+  --black-primary: #06121e;
+  --white-primary: #f5f6f6;
+  --blue-primary: #428bca;
+}
+
+[data-theme="true"] {
+  --black-primary: #f5f5f5;
+  --white-primary: #000000;
+}
