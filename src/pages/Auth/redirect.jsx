@@ -7,9 +7,7 @@ function redirect() {
     const redirectUrl = 'http://127.0.0.1:5173/redirect';
     const params = (new URL(window.location)).searchParams;
     const provider = JSON.parse(localStorage.getItem('provider'))
-    if (provider.state !== params.get('state')) {
-      throw "State parameters don't match.";
-    }
+
     UserService.authWithOauth2(
       {
         provider: provider.name,

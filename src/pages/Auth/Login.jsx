@@ -1,15 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 import styles from './Login.module.scss'
 import classNames from 'classnames/bind'
-import { FacebookIcon, IconGooGle } from '../../assets/icon/icon'
+
 const cx = classNames.bind(styles)
 import { useFormik } from 'formik'
 import { AUTH_TOKEN } from '../../utils/constants'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import UserService from '../../services/user.service'
-import LoginGoogle from './LoginGoogle'
+
+import LoginSocial from './LoginSocial'
 function Login() {
   const navigate = useNavigate();
 
@@ -53,7 +54,7 @@ function Login() {
             </div>
             <div className={cx('border-box')}></div>
             <div>
-              <LoginGoogle />
+              <LoginSocial />
             </div>
           </form>
         </div>

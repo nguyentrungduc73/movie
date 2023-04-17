@@ -10,6 +10,7 @@ import Rating from './Component/Rating/Rating'
 const cx = classNames.bind(styles)
 
 function MovieInfo() {
+  const currentUrl = window.location.href
   const { movieId } = useParams()
   const [dataRender, setDataRender] = useState({})
   useEffect(() => {
@@ -53,7 +54,7 @@ function MovieInfo() {
                   <span className={cx('icon-facebook')}>
                     <Facebooklogo style={{ width: '15px', height: '15px', marginRight: '10px' }} />
                   </span>
-                  <span>Chia sẻ</span>
+                  <div class="fb-share-button" data-href={currentUrl} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5173%2Fmovieinfo%2F${movieId}&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                 </button>
               </div>
               <div className={cx('tag')}>

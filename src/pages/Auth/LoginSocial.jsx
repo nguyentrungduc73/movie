@@ -5,7 +5,7 @@ import styles from './LoginSocial.module.scss'
 import { IconGooGle } from '../../assets/icon/icon';
 const cx = classNames.bind(styles)
 
-function LoginGoogle() {
+function LoginSocial() {
   const [dataRender, setDataRender] = useState([])
   const redirectUrl = 'http://127.0.0.1:5173/redirect';
   useEffect(() => {
@@ -39,4 +39,4 @@ function LoginGoogle() {
   )
 }
 
-export default LoginGoogle
+export default LoginSocial

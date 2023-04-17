@@ -1,5 +1,6 @@
 import Login from "../pages/Auth/Login";
-import LoginGoogle from "../pages/Auth/LoginGoogle";
+import LoginFacebook from "../pages/Auth/LoginFacebook";
+
 import redirect from "../pages/Auth/redirect";
 import Category from "../pages/Category/Category";
 import Home from "../pages/Home/Home";
@@ -17,9 +18,10 @@ const publicRoutes = [
     component: Login,
   },
   {
-    path: "/login/google",
-    component: LoginGoogle,
+    path: "/login/signin-facebook",
+    component: LoginFacebook,
   },
+
   {
     path: "/category/:categoryName",
     component: Category,
