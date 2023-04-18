@@ -9,8 +9,9 @@ import { AUTH_TOKEN } from '../../utils/constants'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import UserService from '../../services/user.service'
+import LoginSocial from './Component/LoginSocial/LoginSocial'
 
-import LoginSocial from './LoginSocial'
+
 function Login() {
   const navigate = useNavigate();
 

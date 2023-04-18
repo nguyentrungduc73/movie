@@ -10,16 +10,15 @@ import CommentMovie from './Component/Comment/CommentMovie'
 import SuggestMovie from '../../Component/SuggestMovie/SuggestMovie'
 import Voting from './Component/Voting/Voting'
 import DarkModeToggle from '../../Component/DarkMode/DarkMode'
+import useUserInfo from '../../hooks/useUserInfo'
 
 const cx = classNames.bind(styles)
 function Watch() {
+  const infoUser = useUserInfo()
   const currentUrl = window.location.href
-
   console.log(currentUrl, 117)
   const { movieId } = useParams()
   const [dataRender, setDataRender] = useState({})
-
-
   useEffect(() => {
     MovieService.read(movieId, 'category')
       .then(res => {
@@ -27,12 +26,10 @@ function Watch() {
         setDataRender(res.data)
       })
   }, [movieId])
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('screen-box')} id='special'>
         <ReactPlayer
-
           url={dataRender.video}
           width="100%"
           height="70vh"
@@ -69,16 +66,16 @@ function Watch() {
             </Link>
             <Voting idMovie={dataRender.id} />
             <DarkModeToggle />
-
           </div>
-
         </div>
-        <div className={cx('suggest-to-login')}>
-          <p>Nếu muốn comment hay đánh giá về bộ phim vui lòng đăng nhập</p>
-          <Link className={cx('btn-login-box')} to={"/login"} >
-            <p>Đăng nhập</p>
-          </Link>
-        </div>
+        {
+          infoUser ? null : <div className={cx('suggest-to-login')}>
+            <p>Nếu muốn comment hay đánh giá về bộ phim vui lòng đăng nhập</p>
+            <Link className={cx('btn-login-box')} to={"/login"} >
+              <p>Đăng nhập</p>
+            </Link>
+          </div>
+        }
         <div className={cx('comment-and-suggestmovie')}>
           <div className={cx('comment-box')}>
             <CommentMovie idMovie={dataRender.id} />

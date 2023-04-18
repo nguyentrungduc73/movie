@@ -1,7 +1,6 @@
+import redirect from "../pages/Auth/Component/LoginSocial/redirect";
 import Login from "../pages/Auth/Login";
-import LoginFacebook from "../pages/Auth/LoginFacebook";
 
-import redirect from "../pages/Auth/redirect";
 import Category from "../pages/Category/Category";
 import Home from "../pages/Home/Home";
 import MovieInfo from "../pages/MovieInfo/MovieInfo";
@@ -17,11 +16,6 @@ const publicRoutes = [
     path: "/login",
     component: Login,
   },
-  {
-    path: "/login/signin-facebook",
-    component: LoginFacebook,
-  },
-
   {
     path: "/category/:categoryName",
     component: Category,

@@ -11,7 +11,7 @@ const UserService = {
   },
   signOut() {
     localStorage.setItem(AUTH_TOKEN, "");
-    return http.post("/v1/auth/logout", null);
+    localStorage.setItem("provider", "");
   },
   isAuthenticated() {
     let authToken = localStorage.getItem(AUTH_TOKEN);

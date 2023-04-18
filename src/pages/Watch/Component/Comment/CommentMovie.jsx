@@ -4,40 +4,49 @@ import styles from "./CommentMovie.module.scss"
 import { CommentIcon } from '../../../../assets/icon/icon'
 import CommentService from '../../../../services/comment.service'
 import useUserInfo from '../../../../hooks/useUserInfo'
+import { useNavigate } from 'react-router-dom'
 const cx = classNames.bind(styles)
 function CommentMovie({ idMovie }) {
+  const nav = useNavigate()
   const [listComment, setListComment] = useState([])
   const textAreaRef = useRef()
   const infoUser = useUserInfo()
   const [newComment, setNewComment] = useState(false)
+  const [errorComment, setErrorComment] = useState(false)
 
   useEffect(() => {
-
     CommentService.searchByCategory(`movie='${idMovie}'`, 'users')
       .then(res => {
-
         setListComment(res.data.items)
-
       }).catch(error => {
         console.log(error)
       })
   }, [idMovie, newComment])
   const handleSubmitComment = (event) => {
     event.preventDefault()
-    console.log(textAreaRef.current.value)
-    CommentService.create({
-      content: textAreaRef.current.value,
-      movie: idMovie,
-      users: infoUser.id
+    if (infoUser) {
+      if (textAreaRef.current.value.trim().length !== 0) {
+        setErrorComment(false)
+        CommentService.create({
+          content: textAreaRef.current.value,
+          movie: idMovie,
+          users: infoUser.id
+        })
+          .then(res => {
+            textAreaRef.current.value = ""
+            setNewComment(false)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
+      else {
+        setErrorComment(true)
+      }
 
-    })
-      .then(res => {
-        textAreaRef.current.value = ""
-        setNewComment(false)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    } else {
+      nav('/login')
+    }
     setNewComment(true)
   }
   const handleDeleteComment = (id) => {
@@ -45,10 +54,10 @@ function CommentMovie({ idMovie }) {
       .then(res => {
         console.log(res)
         setNewComment(false)
-
       })
       .catch((error) => {
         console.log(error)
+
       })
     setNewComment(true)
   }
@@ -73,7 +82,6 @@ function CommentMovie({ idMovie }) {
   }
 
 
-
   return (
     <div className={cx('wrapper')}>
       <h2 className={cx('title')}>
@@ -83,7 +91,6 @@ function CommentMovie({ idMovie }) {
 
       <div className={cx('comment-box')}>
         {listComment.map((comment, index) => {
-
           const VnTime = convertTimeToVN(comment.created)
           console.log('abcd', comment.create)
           return <div className={cx('comment-item')} key={index}>
@@ -91,13 +98,10 @@ function CommentMovie({ idMovie }) {
               <p className={cx('name-user')}>{comment.expand?.users.email}</p>
               <p className={cx('time-comment')}>{VnTime}</p>
             </div>
-
             <p className={cx('content-comment')}>{comment.content}</p>
-
             {
               infoUser?.id === comment.users ? <div className={cx('btn-delete-comment')} onClick={() => handleDeleteComment(comment.id)} >x</div> : null
             }
-
           </div>
         })}
       </div>
@@ -105,8 +109,8 @@ function CommentMovie({ idMovie }) {
       <form onSubmit={handleSubmitComment}>
         <div>
           <textarea className={cx('text-area')} placeholder='Nhập bình luận ...' ref={textAreaRef}>
-
           </textarea>
+          {errorComment && <p>Vui lòng không để trống comment</p>}
         </div>
         <div className={cx('btn-box')}>
           <button type='submit' className={cx('btn-send')}>Gửi</button>

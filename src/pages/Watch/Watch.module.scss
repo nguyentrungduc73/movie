@@ -5,13 +5,7 @@
   background-color: var(--black-primary);
   color: var(--white-primary);
 }
-// .screen-box {
-//   position: fixed;
-//   height: 100vh;
-//   width: 100vw;
-//   background-color: rgba(0, 0, 0, 0.9);
-//   z-index: 10000;
-// }
+
 .container {
   max-width: 130rem;
   margin: auto;
@@ -31,6 +25,7 @@
 .movie-info-box {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 .name-movie {
   margin-bottom: 2rem;

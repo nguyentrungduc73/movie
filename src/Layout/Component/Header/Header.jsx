@@ -10,6 +10,7 @@ import useUserInfo from '../../../hooks/useUserInfo'
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 
 import { Dropdown, Space } from 'antd';
+import UserService from '../../../services/user.service'
 
 const cx = classNames.bind(styles)
 function Header() {
@@ -17,7 +18,8 @@ function Header() {
   const infoUser = useUserInfo()
   console.log(infoUser, 18)
   const handleLogout = () => {
-    console.log('log out')
+    UserService.signOut()
+    window.location.href = '/'
   }
   const items = [
     {
@@ -48,7 +50,7 @@ function Header() {
       <div className={cx('nav-box')}>
         <div className={cx('nav-item', 'logo-box')}>
           <Link to={'/'}>
-            {/* <img src={Logo} alt="" width='100px' height='40px' /> */}
+
             <h1 className={cx('logo')}>PhimPal</h1>
           </Link>
         </div>
@@ -77,7 +79,7 @@ function Header() {
             </a>
           </Dropdown>
           :
-          <Link to={'/login'} className={cx('user-name-box')}>Login</Link>}
+          <Link to={'/login'} className={cx('login-box')}>Login</Link>}
       </div>
     </div>
   )

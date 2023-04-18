@@ -19,7 +19,7 @@ function Rating({ idMovie }) {
   }, [idMovie])
   return (
     <div>
-      <p className={cx('ratting')}>Đánh giá : {allRate ? allRate.toFixed(1) : 5}
+      <p className={cx('ratting')}>Đánh giá : {allRate ? allRate.toFixed(1) : 0}
         <img src={Star} alt="" className={cx('star-ratting')} />
       </p>
     </div>

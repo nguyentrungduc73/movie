@@ -2,21 +2,24 @@ import React from 'react'
 import { Rate, ConfigProvider } from 'antd';
 import VoteService from '../../../../services/vote.service';
 import useUserInfo from '../../../../hooks/useUserInfo'
+import { useNavigate } from 'react-router-dom';
 function Voting({ idMovie }) {
   const infoUser = useUserInfo()
-  console.log(infoUser, 7)
-
+  const nav = useNavigate()
   const handleVote = (values) => {
-
-    VoteService.create({
-      rate: values,
-      movie: idMovie,
-      user: infoUser.id
-    })
-      .then(res => console.log(res))
-      .catch(error => {
-        console.log(error)
+    if (infoUser) {
+      VoteService.create({
+        rate: values,
+        movie: idMovie,
+        user: infoUser.id
       })
+        .then(res => console.log(res))
+        .catch(error => {
+          console.log(error)
+        })
+    } else {
+      nav('/login')
+    }
   }
 
   return (
