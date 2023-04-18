@@ -4,7 +4,8 @@ import { AUTH_TOKEN } from '../../utils/constants';
 
 function redirect() {
   useEffect(() => {
-    const redirectUrl = 'http://127.0.0.1:5173/redirect';
+    const redirectUrl = import.meta.env.REDIRECT
+    console.log(redirectUrl, 8)
     const params = (new URL(window.location)).searchParams;
     const provider = JSON.parse(localStorage.getItem('provider'))
 

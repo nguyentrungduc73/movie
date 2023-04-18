@@ -7,7 +7,8 @@ const cx = classNames.bind(styles)
 
 function LoginSocial() {
   const [dataRender, setDataRender] = useState([])
-  const redirectUrl = 'http://127.0.0.1:5173/redirect';
+  const redirectUrl = import.meta.env.VITE_REDIRECT_URL
+  console.log(redirectUrl, 8)
   useEffect(() => {
     UserService.listAuth()
       .then(res => {
