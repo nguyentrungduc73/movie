@@ -11,6 +11,7 @@ function CommentMovie({ idMovie }) {
   const [listComment, setListComment] = useState([])
   const textAreaRef = useRef()
   const infoUser = useUserInfo()
+
   const [newComment, setNewComment] = useState(false)
   const [errorComment, setErrorComment] = useState(false)
 
@@ -100,7 +101,7 @@ function CommentMovie({ idMovie }) {
             </div>
             <p className={cx('content-comment')}>{comment.content}</p>
             {
-              infoUser?.id === comment.users ? <div className={cx('btn-delete-comment')} onClick={() => handleDeleteComment(comment.id)} >x</div> : null
+              infoUser?.id === comment.users || infoUser?.isAdmin === true ? <div className={cx('btn-delete-comment')} onClick={() => handleDeleteComment(comment.id)} >x</div> : null
             }
           </div>
         })}
