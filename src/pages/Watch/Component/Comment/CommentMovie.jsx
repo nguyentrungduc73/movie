@@ -14,53 +14,48 @@ function CommentMovie({ idMovie }) {
 
   const [newComment, setNewComment] = useState(false)
   const [errorComment, setErrorComment] = useState(false)
+  const getListComment = async () => {
+    const res = await CommentService.searchByCategory(`movie='${idMovie}'`, 'users')
+    setListComment(res.data.items)
+  }
 
   useEffect(() => {
-    CommentService.searchByCategory(`movie='${idMovie}'`, 'users')
-      .then(res => {
-        setListComment(res.data.items)
-      }).catch(error => {
-        console.log(error)
-      })
+    getListComment()
   }, [idMovie, newComment])
-  const handleSubmitComment = (event) => {
+  const handleSubmitComment = async (event) => {
     event.preventDefault()
-    if (infoUser) {
-      if (textAreaRef.current.value.trim().length !== 0) {
-        setErrorComment(false)
-        CommentService.create({
-          content: textAreaRef.current.value,
-          movie: idMovie,
-          users: infoUser.id
-        })
-          .then(res => {
-            textAreaRef.current.value = ""
-            setNewComment(false)
+    try {
+      if (infoUser) {
+        if (textAreaRef.current.value.trim().length !== 0) {
+          setErrorComment(false)
+          const res = await CommentService.create({
+            content: textAreaRef.current.value,
+            movie: idMovie,
+            users: infoUser.id
           })
-          .catch(error => {
-            console.log(error)
-          })
-      }
-      else {
-        setErrorComment(true)
+          console.log(res)
+          textAreaRef.current.value = ""
+          setNewComment(!newComment)
+        } else {
+          setErrorComment(true)
+        }
+
+      } else {
+        nav('/login')
       }
 
-    } else {
-      nav('/login')
+    } catch (error) {
+      console.log(error)
     }
-    setNewComment(true)
-  }
-  const handleDeleteComment = (id) => {
-    CommentService.delete(id)
-      .then(res => {
-        console.log(res)
-        setNewComment(false)
-      })
-      .catch((error) => {
-        console.log(error)
 
-      })
-    setNewComment(true)
+
+
+  }
+  const handleDeleteComment = async (id) => {
+    const res = await CommentService.delete(id)
+    console.log(res)
+    setNewComment(!newComment)
+
   }
 
   function convertTimeToVN(timeStr) {

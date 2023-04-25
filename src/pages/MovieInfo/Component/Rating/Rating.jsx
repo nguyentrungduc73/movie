@@ -6,16 +6,16 @@ import VoteService from '../../../../services/vote.service'
 const cx = classNames.bind(styles)
 function Rating({ idMovie }) {
   const [allRate, setAllRate] = useState(0)
+  const getVoteRating = async () => {
+    const res = await VoteService.searchByName(`movie='${idMovie}'`)
+    let lastRate = 0
+    res.data.items.forEach((item, index) => {
+      lastRate += item.rate
+    })
+    setAllRate(lastRate / res.data.items.length)
+  }
   useEffect(() => {
-    VoteService.searchByName(`movie='${idMovie}'`)
-      .then(res => {
-        console.log(12, res)
-        let lastRate = 0
-        res.data.items.forEach((item, index) => {
-          lastRate += item.rate
-        })
-        setAllRate(lastRate / res.data.items.length)
-      })
+    getVoteRating()
   }, [idMovie])
   return (
     <div>

@@ -4,20 +4,26 @@ import MenuMovie from '../../../Component/MenuMoive/MenuMovie'
 
 function HomeCategory({ category, title }) {
   const [dataRender, setDataRender] = useState([])
-  useEffect(() => {
-    if (category !== undefined) {
-      MovieService.searchByCategory(`category.categoryName?='${category}'`, 'category').then(res => {
-        console.log(res)
-        setDataRender(res.data.items.splice(0, 6))
-      })
-    } else {
-      MovieService.GetAllMovie().then(res => {
-        console.log(res)
-        setDataRender(res.data.items.splice(0, 6))
-      }).catch(err => {
-        console.log(err)
-      })
+
+  const getData = async (category) => {
+    try {
+      if (category !== undefined) {
+        const resp = await MovieService.searchByCategory(
+          `category.categoryName?='${category}'`,
+          "category"
+        );
+        setDataRender(resp.data.items.splice(0, 6));
+      } else {
+        const respa = await MovieService.GetAllMovie();
+        setDataRender(respa.data.items.splice(0, 6));
+      }
+
+    } catch (error) {
+      console.log(error)
     }
+  }
+  useEffect(() => {
+    getData(category)
   }, [])
   return (
     <div>

@@ -13,12 +13,12 @@ function MovieInfo() {
   const currentUrl = window.location.href
   const { movieId } = useParams()
   const [dataRender, setDataRender] = useState({})
+  const getData = async () => {
+    const response = await MovieService.read(movieId, 'category , actor')
+    setDataRender(response.data)
+  }
   useEffect(() => {
-    MovieService.read(movieId, 'category , actor')
-      .then(res => {
-        console.log(res.data)
-        setDataRender(res.data)
-      })
+    getData()
   }, [movieId])
   const styleBackGround = {
     backgroundImage: `linear-gradient(to right bottom, rgba(4, 16, 30, 0.876), rgba(17, 24, 32, 0.817)), url(${dataRender.backGroundMovie})`,
@@ -54,7 +54,7 @@ function MovieInfo() {
                   <span className={cx('icon-facebook')}>
                     <Facebooklogo style={{ width: '15px', height: '15px', marginRight: '10px' }} />
                   </span>
-                  <div class="fb-share-button" data-href={currentUrl} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5173%2Fmovieinfo%2F${movieId}&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                  <div className="fb-share-button" data-href={currentUrl} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5173%2Fmovieinfo%2F${movieId}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                 </button>
               </div>
               <div className={cx('tag')}>

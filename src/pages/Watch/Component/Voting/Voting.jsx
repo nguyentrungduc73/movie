@@ -6,17 +6,15 @@ import { useNavigate } from 'react-router-dom';
 function Voting({ idMovie }) {
   const infoUser = useUserInfo()
   const nav = useNavigate()
-  const handleVote = (values) => {
+  const handleVote = async (values) => {
     if (infoUser) {
-      VoteService.create({
+      const res = await VoteService.create({
         rate: values,
         movie: idMovie,
         user: infoUser.id
       })
-        .then(res => console.log(res))
-        .catch(error => {
-          console.log(error)
-        })
+      console.log(res)
+
     } else {
       nav('/login')
     }

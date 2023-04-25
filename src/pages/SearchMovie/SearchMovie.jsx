@@ -20,21 +20,20 @@ function SearchMovie() {
 
 
   const debounced = useDebounce(searchParams.get('phim'), 1000)
+
+  const getData = async () => {
+    try {
+      const response = await MovieService.searchByName(`namemovie~'${debounced}'`)
+      setDataRender(response.data.items)
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
+  }
   useEffect(() => {
-    console.log(searchParams)
-
     setLoading(true)
-
-
-    MovieService.searchByName(`namemovie~'${debounced}'`)
-      .then(res => {
-        console.log(res)
-        setDataRender(res.data.items)
-        setLoading(false)
-      }).catch(error => {
-        console.log(error)
-        setLoading(false)
-      })
+    getData()
 
   }, [debounced])
   return (
@@ -62,3 +61,6 @@ function SearchMovie() {
 }
 
 export default SearchMovie
+
+
+

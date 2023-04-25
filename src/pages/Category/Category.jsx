@@ -16,16 +16,17 @@ function Category() {
 
   const [dataRender, setDataRender] = useState([])
 
+  const getData = async () => {
+    const res = await MovieService.searchByCategory(`category.categoryName?='${searchParams.get('category') || categoryName}'`, 'category')
+    setDataRender(res.data.items)
+  }
+
 
   useEffect(() => {
-    MovieService.searchByCategory(`category.categoryName?='${searchParams.get('category') || categoryName}'`, 'category')
-      .then((res) => {
-        console.log(res.data.items)
-        setDataRender(res.data.items)
-      })
+    getData()
   }, [searchParams, categoryName])
   const onChange = (value) => {
-    console.log(`selected ${value}`);
+
     setSearchParams({
       category: value
     })

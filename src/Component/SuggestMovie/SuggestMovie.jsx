@@ -10,15 +10,22 @@ import MenuMovie from '../MenuMoive/MenuMovie'
 
 const cx = classNames.bind(styles)
 function SuggestMovie({ category }) {
-  console.log(category)
+
+  const getData = async () => {
+    try {
+      const response = await MovieService.searchByCategory(`category.categoryName?='${category}'`, 'category')
+      setDataRender(response.data.items.splice(0, 6))
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
 
   const [dataRender, setDataRender] = useState([])
   useEffect(() => {
-    MovieService.searchByCategory(`category.categoryName?='${category}'`, 'category')
-      .then(res => {
-        console.log(res)
-        setDataRender(res.data.items.splice(0, 6))
-      })
+    getData()
   }, [category])
 
   return (
@@ -30,3 +37,10 @@ function SuggestMovie({ category }) {
 }
 
 export default SuggestMovie
+
+
+// MovieService.searchByCategory(`category.categoryName?='${category}'`, 'category')
+// .then(res => {
+//   console.log(res)
+//   setDataRender(res.data.items.splice(0, 6))
+// })

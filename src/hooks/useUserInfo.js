@@ -8,9 +8,13 @@ function useUserInfo() {
   const isAuthenticated = UserService.isAuthenticated();
 
   useEffect(() => {
-    UserService.getUserInfo().then((result) => {
-      setUserInfo(result.data);
-    });
+    UserService.getUserInfo()
+      .then((result) => {
+        setUserInfo(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [isAuthenticated]);
 
   return userInfo;

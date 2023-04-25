@@ -8,24 +8,23 @@ const cx = classNames.bind(styles)
 function LoginSocial() {
   const [dataRender, setDataRender] = useState([])
   const redirectUrl = import.meta.env.VITE_REDIRECT_URL_LOCAL
-  console.log(redirectUrl, 8)
+  const getListAuth = async () => {
+    try {
+      const res = await UserService.listAuth()
+      setDataRender(res.data.authProviders)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
-    UserService.listAuth()
-      .then(res => {
-        console.log(res)
-        setDataRender(res.data.authProviders
-        )
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    getListAuth()
   }, [])
   return (
     <>
       {dataRender.map((item, index) => {
         return <a style={{ color: 'black' }} href={item.authUrl + redirectUrl} onClick={() => {
           localStorage.setItem('provider', JSON.stringify(item))
-        }}>
+        }} key={index}>
           <div className={cx('login-gg-box')}>
             <div className={item.name === 'google' ? cx('btn', 'btn-gg') : cx('btn', 'btn-fb')}>
               {item.name === 'google' ? <span>

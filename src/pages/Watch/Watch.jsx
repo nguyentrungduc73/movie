@@ -16,15 +16,16 @@ const cx = classNames.bind(styles)
 function Watch() {
   const infoUser = useUserInfo()
   const currentUrl = window.location.href
-  console.log(currentUrl, 117)
+
   const { movieId } = useParams()
   const [dataRender, setDataRender] = useState({})
+  const getData = async () => {
+    const res = await MovieService.read(movieId, 'category')
+    setDataRender(res.data)
+  }
   useEffect(() => {
-    MovieService.read(movieId, 'category')
-      .then(res => {
-        console.log(res)
-        setDataRender(res.data)
-      })
+    getData()
+
   }, [movieId])
   return (
     <div className={cx('wrapper')}>
@@ -54,7 +55,7 @@ function Watch() {
                 <span className={cx('icon-facebook')}>
                   <Facebooklogo style={{ width: '15px', height: '15px', marginRight: '10px' }} />
                 </span>
-                <div class="fb-share-button" data-href={currentUrl} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5173%2Fwatch%2F${movieId}&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">
+                <div className="fb-share-button" data-href={currentUrl} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A5173%2Fwatch%2F${movieId}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
                   chia sẻ</a></div>
               </button>
             </div>
